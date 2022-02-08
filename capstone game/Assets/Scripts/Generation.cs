@@ -17,7 +17,7 @@ public class Generation : MonoBehaviour
           for(int c=0; c<5; c++){
             coin = Random.Range(0, 2);
             if(coin == 1){
-                          Instantiate(cube, new Vector3(xpos[a], ypos[b], zpos[c]), Quaternion.identity);
+                          Instantiate(cube, new Vector3(xpos[a] * 10, ypos[b] * 10, zpos[c] * 10), Quaternion.identity);
             }
           }
         }

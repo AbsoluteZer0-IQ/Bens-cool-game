@@ -8,7 +8,7 @@ public class Move : MonoBehaviour
     public int speed = 5;
     public bool groundedPlayer;
     public Vector3 playerVelocity;
-    public float jump = 2;
+    public float jump = 30;
     public float gravityValue = -10;
 
 
@@ -26,12 +26,13 @@ public class Move : MonoBehaviour
 
       if (Input.GetButtonDown("Jump") && groundedPlayer)
         {
-            playerVelocity.y += jump;
+          transform.Translate(Vector3.up * Time.deltaTime);
+          //  playerVelocity.y += jump;
         }
-      if(groundedPlayer == false){
-        playerVelocity.y += gravityValue * Time.deltaTime;
-      }
-        mover.Move(playerVelocity * Time.deltaTime);
+    //  if(groundedPlayer == false){
+    //    playerVelocity.y += gravityValue * Time.deltaTime;
+  //    }
+    //    mover.Move(playerVelocity * Time.deltaTime);
 
     }
 }
