@@ -6,15 +6,14 @@ public class Move : MonoBehaviour
 {
     public CharacterController mover;
     public int speed = 5;
-    public bool groundedPlayer, help;
+    public bool groundedPlayer;
     public Vector3 playerVelocity;
     public int jumper = 0;
-    public float garvity = -10, chngrv;
+    public float upMove = 0, upInput;
 
     void Start()
     {
       mover = GetComponent<CharacterController>();
-      help = true;
     }
 
     // Update is called once per frame
@@ -34,15 +33,15 @@ public class Move : MonoBehaviour
     if(Input.GetAxis("Jump") == 1 && mover.isGrounded){
       jumper = 1;
     }
-    if(jumper > 0 && help){
-      help = false;
-      for(int i=-2; i<3; i++){
-        garvity = (-Mathf.Pow(i, 2) + 5) ;
-        jumper--;
-        Debug.Log("cum");
-      }
+    if(jumper > 0){
+      jumper = 0;
+      upInput = -2;
     }
-      Vector3 move = new Vector3(Input.GetAxis("Horizontal"), garvity, Input.GetAxis("Vertical"));
+    if(upInput <= 2){
+      upMove = (-Mathf.Pow(upInput, 2) + 5) ;
+      upInput--;
+    }
+      Vector3 move = new Vector3(Input.GetAxis("Horizontal"), upMove, Input.GetAxis("Vertical"));
       mover.Move(move * Time.deltaTime * speed);
     }
 }
