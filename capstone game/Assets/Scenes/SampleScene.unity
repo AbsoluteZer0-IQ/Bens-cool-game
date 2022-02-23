@@ -360,6 +360,8 @@ GameObject:
   - component: {fileID: 1495724030}
   - component: {fileID: 1495724034}
   - component: {fileID: 1495724035}
+  - component: {fileID: 1495724036}
+  - component: {fileID: 1495724037}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -455,7 +457,7 @@ CharacterController:
   m_GameObject: {fileID: 1495724029}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Height: 1
   m_Radius: 0.5
@@ -471,21 +473,51 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1495724029}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e779dcfd71e1fd24cbe9be143f14dec4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mover: {fileID: 0}
   speed: 5
-  groundedPlayer: 0
   isJump: 0
-  playerVelocity: {x: 0, y: 0, z: 0}
   jumper: 0
   upMove: 0
   upInput: 0
   garvity: -2
   sign: 0
+--- !u!54 &1495724036
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1495724029}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!114 &1495724037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1495724029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab3b1bdb14ec56247b0636cecb44b69e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  mSpeed: 40
+  MouseX: 0
+  MouseY: 0
 --- !u!1 &2000429092
 GameObject:
   m_ObjectHideFlags: 0
