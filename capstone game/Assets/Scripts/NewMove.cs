@@ -14,38 +14,40 @@ public class NewMove : MonoBehaviour
     public Vector3 look;
     public CamCon script;
     public bool onFloor;
-    // Start is called before the first frame update
-    void Start()
-    {
+    public int test = 0;
+
+    void Start(){
       onFloor = false;
       Cursor.lockState = CursorLockMode.Locked;
       script = GameObject.Find("Main Camera").GetComponent<CamCon>();
     }
-
     void OnTriggerEnter(Collider other){
       if (other.CompareTag("Ground")){
         onFloor = true;
+        Debug.Log(test);
+        test = 0;
       }
     }
-    void OnTriggerExit(Collider other){
-      if (other.CompareTag("Ground")){
-        onFloor = false;
-      }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+//    void OnTriggerExit(Collider other){
+  //    if (other.CompareTag("Ground")){
+  //      onFloor = false;
+  //    }
+//    }
+    void Update(){
         if(Input.GetAxisRaw("Vertical") == 1){
           transform.position += transform.forward * Time.deltaTime * speed;
         }
 //        MouseY = Input.GetAxis("Mouse Y") * mSpeed;
         MouseX = Input.GetAxis("Mouse X") * mSpeed;
         transform.Rotate(MouseY, MouseX, 0);
+        if(test == 18){
+          onFloor = false;
+        }
         if(Input.GetAxisRaw("Jump") == 1 && onFloor){
           GetComponent<Rigidbody>().AddForce(transform.up * jSpeed);
+          test++;
       //    onFloor = false;
-          Debug.Log("qwdcgwefqhj");
+      //    Debug.Log("qwdcgwefqhj");
       //    look = transform.InverseTransformDirection(GetComponent<Rigidbody>().velocity);
     //      look.z = jSpeed;
         //  look.y = 5;

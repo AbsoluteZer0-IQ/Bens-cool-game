@@ -505,12 +505,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  jSpeed: 5
+  jSpeed: 25
   mSpeed: 5
   MouseX: 0
   MouseY: 0
   look: {x: 0, y: 0, z: 0}
   script: {fileID: 0}
+  onFloor: 0
+  test: 0
 --- !u!65 &1495724038
 BoxCollider:
   m_ObjectHideFlags: 0
