@@ -17,13 +17,18 @@ public class NewMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      onFloor = true;
+      onFloor = false;
       Cursor.lockState = CursorLockMode.Locked;
       script = GameObject.Find("Main Camera").GetComponent<CamCon>();
     }
 
-    void OnCollisionEnter(collision other){
-      if (other.GameObject.Tag == ("Ground")){
+    void OnTriggerEnter(Collider other){
+      if (other.CompareTag("Ground")){
+        onFloor = true;
+      }
+    }
+    void OnTriggerExit(Collider other){
+      if (other.CompareTag("Ground")){
         onFloor = false;
       }
     }
@@ -37,9 +42,10 @@ public class NewMove : MonoBehaviour
 //        MouseY = Input.GetAxis("Mouse Y") * mSpeed;
         MouseX = Input.GetAxis("Mouse X") * mSpeed;
         transform.Rotate(MouseY, MouseX, 0);
-        if(Input.GetAxisRaw("Jump") == 1 && !onFloor){
-          onFloor = true;
+        if(Input.GetAxisRaw("Jump") == 1 && onFloor){
           GetComponent<Rigidbody>().AddForce(transform.up * jSpeed);
+      //    onFloor = false;
+          Debug.Log("qwdcgwefqhj");
       //    look = transform.InverseTransformDirection(GetComponent<Rigidbody>().velocity);
     //      look.z = jSpeed;
         //  look.y = 5;
