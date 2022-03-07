@@ -12,14 +12,15 @@ public class NewMove : MonoBehaviour
     public int mSpeed;
     public float MouseX, MouseY;
     public Vector3 look;
-    public CamCon script;
+    public Generation script;
     public bool onFloor;
     public int test = 0;
 
     void Start(){
       onFloor = false;
       Cursor.lockState = CursorLockMode.Locked;
-      script = GameObject.Find("Main Camera").GetComponent<CamCon>();
+      script = GameObject.Find("Creator").GetComponent<Generation>();
+      transform.position = new Vector3(0, script.maxY * 10, 0);
     }
     void OnTriggerEnter(Collider other){
       if (other.CompareTag("Ground")){
