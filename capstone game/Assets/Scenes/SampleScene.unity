@@ -555,7 +555,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: facd3deb63bfd7c428ef7e610c49289c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cube: {fileID: 8599894207796250468, guid: 5ab336e50e8feb443b19b2e5eb12cbc4, type: 3}
+  cube: {fileID: 1360815368569601730, guid: c8a1526f4a3e3c045aa9d27cf28a5437, type: 3}
   maxX: 10
   maxY: 10
   maxZ: 10
