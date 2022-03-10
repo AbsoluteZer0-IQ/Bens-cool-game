@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NewMove : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class NewMove : MonoBehaviour
     [Range(0, 100)]
     public int mSpeed;
     public float MouseX, MouseY;
-    public Vector3 look;
+    public Vector3 look, mover;
     public Generation script;
     public bool onFloor;
     public int test = 0;
@@ -19,15 +20,20 @@ public class NewMove : MonoBehaviour
     void Start(){
       onFloor = false;
       Cursor.lockState = CursorLockMode.Locked;
-      script = GameObject.Find("Creator").GetComponent<Generation>();
-      transform.position = new Vector3(0, script.maxY * 10, 0);
+      if(SceneManager.GetActiveScene().buildIndex == 1){
+        script = GameObject.Find("Creator").GetComponent<Generation>();
+        transform.position = new Vector3(0, script.maxY * 10, 0);
+      }
     }
     void OnTriggerEnter(Collider other){
-      if (other.CompareTag("Ground")){
+      if(other.CompareTag("Ground")){
         onFloor = true;
         Debug.Log(test);
         test = 0;
       }
+        if(other.CompareTag("Start")){
+          SceneManager.LoadScene(1);
+        }
     }
 //    void OnTriggerExit(Collider other){
   //    if (other.CompareTag("Ground")){
@@ -35,9 +41,7 @@ public class NewMove : MonoBehaviour
   //    }
 //    }
     void Update(){
-        if(Input.GetAxisRaw("Vertical") == 1){
-          transform.position += transform.forward * Time.deltaTime * speed;
-        }
+      //  mover = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 //        MouseY = Input.GetAxis("Mouse Y") * mSpeed;
         MouseX = Input.GetAxis("Mouse X") * mSpeed;
         transform.Rotate(MouseY, MouseX, 0);
@@ -53,6 +57,11 @@ public class NewMove : MonoBehaviour
     //      look.z = jSpeed;
         //  look.y = 5;
         //  GetComponent<Rigidbody>().velocity = transform.TransformDirection(look);
+        }
+        }
+    void FixedUpdate(){
+        if(Input.GetAxisRaw("Vertical") == 1){
+        GetComponent<Rigidbody>().MovePosition(transform.position + transform.forward * Time.deltaTime * speed);
         }
     }
 }
