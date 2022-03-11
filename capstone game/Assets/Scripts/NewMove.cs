@@ -31,9 +31,12 @@ public class NewMove : MonoBehaviour
         Debug.Log(test);
         test = 0;
       }
-        if(other.CompareTag("Start")){
-          SceneManager.LoadScene(1);
-        }
+      if(other.CompareTag("Start")){
+        SceneManager.LoadScene(1);
+      }
+      if(other.CompareTag("Kill")){
+        SceneManager.LoadScene(0);
+      }
     }
 //    void OnTriggerExit(Collider other){
   //    if (other.CompareTag("Ground")){
