@@ -28,7 +28,6 @@ public class NewMove : MonoBehaviour
     void OnTriggerEnter(Collider other){
       if(other.CompareTag("Ground")){
         onFloor = true;
-        Debug.Log(test);
         test = 0;
       }
       if(other.CompareTag("Start")){

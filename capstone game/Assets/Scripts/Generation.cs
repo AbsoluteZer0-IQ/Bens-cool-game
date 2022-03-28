@@ -37,7 +37,6 @@ public class Generation : MonoBehaviour
                 rot = -90;
               }
               Instantiate(prefabs[dice], new Vector3(xpos[a] * 10, ypos[b] * 10, zpos[c] * 10), Quaternion.Euler(rot, 0, 0));
-              Debug.Log(rot);
             }
           }
         }
