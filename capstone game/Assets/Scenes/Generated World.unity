@@ -615,14 +615,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc33d2df61396fa4c9038e45194ee17e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exe: 0.254
-  why: 0.079
-  zee: 0.428
+  exe: 10
+  why: 10
+  zee: 10
   test: {x: 0, y: 0, z: 0}
   a: 0
   b: 0
   c: 0
   cool: 0
+  mixer: 0
 --- !u!4 &1552067674
 Transform:
   m_ObjectHideFlags: 0
@@ -674,7 +675,7 @@ MonoBehaviour:
   - {fileID: 1360815368569601730, guid: c8a1526f4a3e3c045aa9d27cf28a5437, type: 3}
   - {fileID: 6320376498977713980, guid: 156d91e02eccc9c4286373f93bbcd8ab, type: 3}
   maxX: 10
-  maxY: 100
+  maxY: 10
   maxZ: 10
   xpos: 0100000002000000030000000400000005000000
   ypos: 0100000002000000030000000400000005000000
