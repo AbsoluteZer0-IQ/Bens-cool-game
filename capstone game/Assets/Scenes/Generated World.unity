@@ -167,7 +167,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &320701207
 MonoBehaviour:
@@ -495,7 +495,7 @@ Transform:
   - {fileID: 963194228}
   - {fileID: 805153327}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &1495724034
 CharacterController:
@@ -597,7 +597,7 @@ GameObject:
   - component: {fileID: 1552067674}
   - component: {fileID: 1552067673}
   m_Layer: 0
-  m_Name: lame
+  m_Name: NoiseMaker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -617,13 +617,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   exe: 10
   why: 10
-  zee: 10
+  zed: 0
   test: {x: 0, y: 0, z: 0}
-  a: 0
-  b: 0
-  c: 0
+  d: 0
+  e: 0
+  f: 0
   cool: 0
   mixer: 0
+  prefabs:
+  - {fileID: 950531881556910575, guid: 4ccef5f60b62fd54f87afdbaaaf5ff30, type: 3}
+  - {fileID: 2757806392889189967, guid: fadfbe13e8d913c47b755201fa332dd1, type: 3}
+  - {fileID: 7928435971552772345, guid: b5a09b6490ed8184c8b91bb4a5226914, type: 3}
+  - {fileID: 1360815368569601730, guid: c8a1526f4a3e3c045aa9d27cf28a5437, type: 3}
+  - {fileID: 6320376498977713980, guid: 156d91e02eccc9c4286373f93bbcd8ab, type: 3}
+  maxX: 10
+  maxY: 10
+  maxZ: 10
+  xpos: 
+  ypos: 
+  zpos: 
+  block: 0
+  rotx: 0
+  roty: 0
+  randrot: 0
 --- !u!4 &1552067674
 Transform:
   m_ObjectHideFlags: 0
@@ -632,12 +648,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1552067672}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 47.551476, y: 77.24119, z: 40.978622}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2000429092
 GameObject:
@@ -655,7 +671,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2000429093
 MonoBehaviour:
   m_ObjectHideFlags: 0

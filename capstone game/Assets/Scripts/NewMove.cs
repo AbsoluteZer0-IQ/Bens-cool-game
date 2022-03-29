@@ -13,7 +13,8 @@ public class NewMove : MonoBehaviour
     public int mSpeed;
     public float MouseX, MouseY;
     public Vector3 look, mover;
-    public Generation script;
+    //public Generation script;
+    public Noise script;
     public bool onFloor;
     public int test = 0;
 
@@ -21,7 +22,8 @@ public class NewMove : MonoBehaviour
       onFloor = false;
       Cursor.lockState = CursorLockMode.Locked;
       if(SceneManager.GetActiveScene().buildIndex == 1){
-        script = GameObject.Find("Creator").GetComponent<Generation>();
+        script = GameObject.Find("NoiseMaker").GetComponent<Noise>();
+    //    script = GameObject.Find("Creator").GetComponent<Generation>();
         transform.position = new Vector3(0, script.maxY * 10, 0);
       }
     }

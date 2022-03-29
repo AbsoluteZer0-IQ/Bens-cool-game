@@ -42,10 +42,4 @@ public class Generation : MonoBehaviour
         }
       }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }
