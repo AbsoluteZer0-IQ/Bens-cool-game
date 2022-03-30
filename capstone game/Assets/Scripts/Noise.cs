@@ -11,15 +11,10 @@ public class Noise : MonoBehaviour
     public float d, e, f, cool, mixer;
 
     public GameObject[] prefabs;
+    public GameObject start;
     [Range(0, 1000)]
-    public int maxX;
-    [Range(0, 1000)]
-    public int maxY;
-    [Range(0, 1000)]
-    public int maxZ;
-    public int[] xpos;
-    public int[] ypos;
-    public int[] zpos;
+    public int maxX, maxY, maxZ;
+    public int[] xpos, ypos, zpos;
     public int block, rotx, roty, randrot;
 
     void Start(){
@@ -33,6 +28,10 @@ public class Noise : MonoBehaviour
         for(int b=0; b<maxY; b++){
           for(int c=0; c<maxZ; c++){
 
+            if(a == 0 && b == 0 && c == 0){
+              Instantiate(start, new Vector3(0, 0, 0), Quaternion.Euler(-90, 0, 0));
+            }
+            else{
               exe = xpos[a] * 10f;
               why = ypos[b] * 10f;
               zed = zpos[c] * 10f;
@@ -43,7 +42,7 @@ public class Noise : MonoBehaviour
               cool = (d+e+f)/3;
               //Debug.Log(cool);
 
-              if((cool < 0.275) || (cool > 0.625)){
+              if((cool < 0.275) || (cool > 0.625) || (0.52 < cool && cool < 0.555)){
                 Debug.Log("nothing");
               }
               else if((0.275 < cool && cool < 0.31) || (0.59 < cool && cool < 0.625)){
@@ -56,31 +55,14 @@ public class Noise : MonoBehaviour
                 rotx = -90;
                 roty = 0;
               }
-              else if((0.345 < cool && cool < 0.38) || (0.52 < cool && cool < 0.555)){
+              else if((0.345 < cool && cool < 0.38)){
                 block = 2;
-                rotx = 90;
-                randrot = Random.Range(1, 5);
-                switch(randrot){
-                  case 1:
-                    roty = 0;
-                    break;
-                  case 2:
-                    roty = 90;
-                    break;
-                  case 3:
-                    roty = 180;
-                    break;
-                  case 4:
-                    roty = 270;
-                    break;
-                  default:
-                    roty = 0;
-                    break;
-                }
+                rotx = -90;
+                roty = Random.Range(0, 4) * 90;
               }
               else if((0.38 < cool && cool < 0.415) || (0.485 < cool && cool < 0.52)){
                 block = 3;
-                rotx = -90;
+                rotx = 90;
                 roty = 0;
               }
               else if((0.415 < cool && cool < 0.45) || (0.45 < cool && cool < 0.485)){
@@ -88,8 +70,8 @@ public class Noise : MonoBehaviour
                 rotx = -90;
                 roty = 0;
               }
-
-              Instantiate(prefabs[block], new Vector3(exe, why, zed), Quaternion.Euler(rotx, roty, 0));
+              Instantiate(prefabs[block], new Vector3(exe, why, zed), Quaternion.Euler(rotx, 0, roty));
+            }
             }
           }
         }

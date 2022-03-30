@@ -488,7 +488,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1495724029}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 58, z: 0}
+  m_LocalPosition: {x: 0, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -625,11 +625,12 @@ MonoBehaviour:
   cool: 0
   mixer: 0
   prefabs:
-  - {fileID: 950531881556910575, guid: 4ccef5f60b62fd54f87afdbaaaf5ff30, type: 3}
-  - {fileID: 2757806392889189967, guid: fadfbe13e8d913c47b755201fa332dd1, type: 3}
-  - {fileID: 7928435971552772345, guid: b5a09b6490ed8184c8b91bb4a5226914, type: 3}
   - {fileID: 1360815368569601730, guid: c8a1526f4a3e3c045aa9d27cf28a5437, type: 3}
+  - {fileID: 2757806392889189967, guid: fadfbe13e8d913c47b755201fa332dd1, type: 3}
   - {fileID: 6320376498977713980, guid: 156d91e02eccc9c4286373f93bbcd8ab, type: 3}
+  - {fileID: 7928435971552772345, guid: b5a09b6490ed8184c8b91bb4a5226914, type: 3}
+  - {fileID: 950531881556910575, guid: 4ccef5f60b62fd54f87afdbaaaf5ff30, type: 3}
+  start: {fileID: 2020046688101157315, guid: 8b7025fee3b04984db10f5d318dbce39, type: 3}
   maxX: 10
   maxY: 10
   maxZ: 10

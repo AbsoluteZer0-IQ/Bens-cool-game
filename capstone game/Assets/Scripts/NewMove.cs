@@ -24,7 +24,7 @@ public class NewMove : MonoBehaviour
       if(SceneManager.GetActiveScene().buildIndex == 1){
         script = GameObject.Find("NoiseMaker").GetComponent<Noise>();
     //    script = GameObject.Find("Creator").GetComponent<Generation>();
-        transform.position = new Vector3(0, script.maxY * 10, 0);
+        transform.position = new Vector3(0, 3, 0);
       }
     }
     void OnTriggerEnter(Collider other){
