@@ -5,8 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
-  - Start
   - Kill
+  - Basic
+  - Tower
+  - Maze
   layers:
   - Default
   - TransparentFX

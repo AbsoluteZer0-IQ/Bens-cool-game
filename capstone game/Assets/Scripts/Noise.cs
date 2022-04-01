@@ -12,12 +12,16 @@ public class Noise : MonoBehaviour
 
     public GameObject[] prefabs;
     public GameObject start;
-    [Range(0, 1000)]
+    [Range(0, 200)]
     public int maxX, maxY, maxZ;
     public int[] xpos, ypos, zpos;
     public int block, rotx, roty, randrot;
 
     void Start(){
+    //  maxX =
+    //  maxY =
+    //  maxZ =
+
       mixer = (Random.Range(10, 101));
 
       xpos = Enumerable.Range(0, maxX + 1).ToArray();
@@ -28,14 +32,24 @@ public class Noise : MonoBehaviour
         for(int b=0; b<maxY; b++){
           for(int c=0; c<maxZ; c++){
 
-            if(a == 0 && b == 0 && c == 0){
-              Instantiate(start, new Vector3(0, 0, 0), Quaternion.Euler(-90, 0, 0));
+            exe = xpos[a] * 10f;
+            why = ypos[b] * 10f;
+            zed = zpos[c] * 10f;
+            test = new Vector3(exe, why, zed);
+
+            if(exe == 0 && why == 0 && zed == 0){
+              Instantiate(start, test, Quaternion.Euler(-90, 0, 0));
+            }
+            else if(exe == 0 && why == 10 && zed == 0){
+              Debug.Log("nothing");
+            }
+            else if(exe == 10 && why == 10 && zed == 0){
+              Instantiate(prefabs[2], test, Quaternion.Euler(-90, 0, 0));
+            }
+            else if(exe == 0 && why == 10 && zed == 10){
+              Instantiate(prefabs[2], test, Quaternion.Euler(-90, 0, -90));
             }
             else{
-              exe = xpos[a] * 10f;
-              why = ypos[b] * 10f;
-              zed = zpos[c] * 10f;
-              test = new Vector3(exe, why, zed);
               d = Mathf.PerlinNoise(test.x/mixer, test.y/mixer);
               e = Mathf.PerlinNoise(test.x/mixer, test.z/mixer);
               f = Mathf.PerlinNoise(test.y/mixer, test.z/mixer);

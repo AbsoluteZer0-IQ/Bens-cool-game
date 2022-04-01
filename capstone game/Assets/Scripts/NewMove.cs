@@ -24,7 +24,7 @@ public class NewMove : MonoBehaviour
       if(SceneManager.GetActiveScene().buildIndex == 1){
         script = GameObject.Find("NoiseMaker").GetComponent<Noise>();
     //    script = GameObject.Find("Creator").GetComponent<Generation>();
-        transform.position = new Vector3(0, 3, 0);
+        transform.position = new Vector3(0, 6, 0);
       }
     }
     void OnTriggerEnter(Collider other){
@@ -32,7 +32,13 @@ public class NewMove : MonoBehaviour
         onFloor = true;
         test = 0;
       }
-      if(other.CompareTag("Start")){
+      if(other.CompareTag("Basic")){
+        SceneManager.LoadScene(1);
+      }
+      if(other.CompareTag("Tower")){
+        SceneManager.LoadScene(1);
+      }
+      if(other.CompareTag("Maze")){
         SceneManager.LoadScene(1);
       }
       if(other.CompareTag("Kill")){
