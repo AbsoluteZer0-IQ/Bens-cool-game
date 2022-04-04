@@ -12,7 +12,7 @@ public class Noise : MonoBehaviour
 
     public GameObject[] prefabs;
     public GameObject start;
-    [Range(0, 200)]
+  //  [Range(0, 200)]
     public int maxX, maxY, maxZ;
     public int[] xpos, ypos, zpos;
     public int block, rotx, roty, randrot;
@@ -24,6 +24,9 @@ public class Noise : MonoBehaviour
 
       mixer = (Random.Range(10, 101));
 
+      maxX = PlayerPrefs.GetInt("xMax");
+      maxY = PlayerPrefs.GetInt("yMax");
+      maxZ = PlayerPrefs.GetInt("zMax");
       xpos = Enumerable.Range(0, maxX + 1).ToArray();
       ypos = Enumerable.Range(0, maxY + 1).ToArray();
       zpos = Enumerable.Range(0, maxZ + 1).ToArray();
@@ -41,13 +44,16 @@ public class Noise : MonoBehaviour
               Instantiate(start, test, Quaternion.Euler(-90, 0, 0));
             }
             else if(exe == 0 && why == 10 && zed == 0){
-              Debug.Log("nothing");
+            //  Debug.Log("nothing");
             }
             else if(exe == 10 && why == 10 && zed == 0){
               Instantiate(prefabs[2], test, Quaternion.Euler(-90, 0, 0));
             }
             else if(exe == 0 && why == 10 && zed == 10){
               Instantiate(prefabs[2], test, Quaternion.Euler(-90, 0, -90));
+            }
+            else if(exe == 10 && why == 10 && zed == 10){
+              Instantiate(prefabs[0], test, Quaternion.Euler(-90, 0, 0));
             }
             else{
               d = Mathf.PerlinNoise(test.x/mixer, test.y/mixer);
@@ -57,9 +63,9 @@ public class Noise : MonoBehaviour
               //Debug.Log(cool);
 
               if((cool < 0.275) || (cool > 0.625) || (0.52 < cool && cool < 0.555)){
-                Debug.Log("nothing");
+            //    Debug.Log("nothing");
               }
-              else if((0.275 < cool && cool < 0.31) || (0.59 < cool && cool < 0.625)){
+              else if((0.275 < cool && cool < 0.31) || (0.59 < cool && cool < 0.625) || (0.45 < cool && cool < 0.485)){
                 block = 0;
                 rotx = -90;
                 roty = 0;
@@ -79,7 +85,7 @@ public class Noise : MonoBehaviour
                 rotx = 90;
                 roty = 0;
               }
-              else if((0.415 < cool && cool < 0.45) || (0.45 < cool && cool < 0.485)){
+              else if((0.415 < cool && cool < 0.45)){
                 block = 4;
                 rotx = -90;
                 roty = 0;

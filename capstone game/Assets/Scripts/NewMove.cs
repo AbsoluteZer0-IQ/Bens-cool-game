@@ -33,12 +33,21 @@ public class NewMove : MonoBehaviour
         test = 0;
       }
       if(other.CompareTag("Basic")){
+        PlayerPrefs.SetInt("xMax", Random.Range(15, 26));
+        PlayerPrefs.SetInt("yMax", Random.Range(15, 26));
+        PlayerPrefs.SetInt("zMax", Random.Range(15, 26));
         SceneManager.LoadScene(1);
       }
       if(other.CompareTag("Tower")){
+        PlayerPrefs.SetInt("xMax", Random.Range(5, 11));
+        PlayerPrefs.SetInt("yMax", Random.Range(100, 151));
+        PlayerPrefs.SetInt("zMax", Random.Range(5, 11));
         SceneManager.LoadScene(1);
       }
       if(other.CompareTag("Maze")){
+        PlayerPrefs.SetInt("xMax", Random.Range(40, 51));
+        PlayerPrefs.SetInt("yMax", Random.Range(2, 6));
+        PlayerPrefs.SetInt("zMax", Random.Range(40, 51));
         SceneManager.LoadScene(1);
       }
       if(other.CompareTag("Kill")){
@@ -55,18 +64,9 @@ public class NewMove : MonoBehaviour
 //        MouseY = Input.GetAxis("Mouse Y") * mSpeed;
         MouseX = Input.GetAxis("Mouse X") * mSpeed;
         transform.Rotate(MouseY, MouseX, 0);
-        if(test == 18){
-          onFloor = false;
-        }
-        if(Input.GetAxisRaw("Jump") == 1 && onFloor){
-          GetComponent<Rigidbody>().AddForce(transform.up * jSpeed);
-          test++;
-      //    onFloor = false;
-      //    Debug.Log("qwdcgwefqhj");
-      //    look = transform.InverseTransformDirection(GetComponent<Rigidbody>().velocity);
-    //      look.z = jSpeed;
-        //  look.y = 5;
-        //  GetComponent<Rigidbody>().velocity = transform.TransformDirection(look);
+        if(Input.GetAxisRaw("Jump") == 1){
+          //onFloor = false;
+          GetComponent<Rigidbody>().AddForce(transform.up * jSpeed * Time.deltaTime);
         }
         }
     void FixedUpdate(){

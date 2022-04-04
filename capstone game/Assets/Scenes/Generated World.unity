@@ -631,9 +631,9 @@ MonoBehaviour:
   - {fileID: 7928435971552772345, guid: b5a09b6490ed8184c8b91bb4a5226914, type: 3}
   - {fileID: 950531881556910575, guid: 4ccef5f60b62fd54f87afdbaaaf5ff30, type: 3}
   start: {fileID: 2020046688101157315, guid: 8b7025fee3b04984db10f5d318dbce39, type: 3}
-  maxX: 50
-  maxY: 3
-  maxZ: 45
+  maxX: 10
+  maxY: 10
+  maxZ: 10
   xpos: 
   ypos: 
   zpos: 
