@@ -780,15 +780,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  jSpeed: 25
+  jSpeed: 10
   mSpeed: 5
   MouseX: 0
   MouseY: 0
+  jUp: 1.5
+  jDown: 1
   look: {x: 0, y: 0, z: 0}
   mover: {x: 0, y: 0, z: 0}
   script: {fileID: 0}
   onFloor: 0
   test: 0
+  rb: {fileID: 0}
 --- !u!54 &1747478968
 Rigidbody:
   m_ObjectHideFlags: 0

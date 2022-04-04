@@ -11,16 +11,18 @@ public class NewMove : MonoBehaviour
     public int jSpeed;
     [Range(0, 100)]
     public int mSpeed;
-    public float MouseX, MouseY;
+    public float MouseX, MouseY, jUp, jDown;
     public Vector3 look, mover;
     //public Generation script;
     public Noise script;
     public bool onFloor;
     public int test = 0;
+    public Rigidbody rb;
 
     void Start(){
       onFloor = false;
       Cursor.lockState = CursorLockMode.Locked;
+      rb = GetComponent<Rigidbody>();
       if(SceneManager.GetActiveScene().buildIndex == 1){
         script = GameObject.Find("NoiseMaker").GetComponent<Noise>();
     //    script = GameObject.Find("Creator").GetComponent<Generation>();
@@ -54,19 +56,19 @@ public class NewMove : MonoBehaviour
         SceneManager.LoadScene(0);
       }
     }
-//    void OnTriggerExit(Collider other){
-  //    if (other.CompareTag("Ground")){
-  //      onFloor = false;
-  //    }
-//    }
     void Update(){
-      //  mover = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-//        MouseY = Input.GetAxis("Mouse Y") * mSpeed;
         MouseX = Input.GetAxis("Mouse X") * mSpeed;
         transform.Rotate(MouseY, MouseX, 0);
-        if(Input.GetAxisRaw("Jump") == 1){
-          //onFloor = false;
-          GetComponent<Rigidbody>().AddForce(transform.up * jSpeed * Time.deltaTime);
+
+        if(rb.velocity.y < 0){
+          rb.velocity += Vector3.up * jUp * Time.deltaTime;
+        }
+        else if(rb.velocity.y > 0 && !Input.GetButton("Jump")){
+          rb.velocity += Vector3.up * jDown * Time.deltaTime;
+        }
+        if(Input.GetButtonDown("Jump") && onFloor){
+          onFloor = false;
+          rb.velocity = Vector3.up * jSpeed;
         }
         }
     void FixedUpdate(){
