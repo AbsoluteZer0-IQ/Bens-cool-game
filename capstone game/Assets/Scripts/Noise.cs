@@ -22,7 +22,7 @@ public class Noise : MonoBehaviour
     //  maxY =
     //  maxZ =
 
-      mixer = (Random.Range(10, 101));
+      mixer = (Random.Range(10.1f, 100.1f));
 
       maxX = PlayerPrefs.GetInt("xMax");
       maxY = PlayerPrefs.GetInt("yMax");
