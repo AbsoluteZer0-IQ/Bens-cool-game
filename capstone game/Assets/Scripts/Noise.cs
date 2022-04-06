@@ -65,7 +65,7 @@ public class Noise : MonoBehaviour
               if((cool < 0.275) || (cool > 0.625) || (0.52 < cool && cool < 0.555)){
             //    Debug.Log("nothing");
               }
-              else if((0.275 < cool && cool < 0.31) || (0.59 < cool && cool < 0.625) || (0.45 < cool && cool < 0.485)){
+              else if((0.275 < cool && cool < 0.31) || (0.59 < cool && cool < 0.625)){
                 block = 0;
                 rotx = -90;
                 roty = 0;
@@ -87,6 +87,11 @@ public class Noise : MonoBehaviour
               }
               else if((0.415 < cool && cool < 0.45)){
                 block = 4;
+                rotx = -90;
+                roty = 0;
+              }
+              else if(0.45 < cool && cool < 0.485){
+                block = 5;
                 rotx = -90;
                 roty = 0;
               }
