@@ -70,7 +70,7 @@ public class NewMove : MonoBehaviour
           onFloor = false;
           rb.velocity = Vector3.up * jSpeed;
         }
-        }
+      }
     void FixedUpdate(){
         if(Input.GetAxisRaw("Vertical") == 1){
         GetComponent<Rigidbody>().MovePosition(transform.position + transform.forward * Time.deltaTime * speed);
