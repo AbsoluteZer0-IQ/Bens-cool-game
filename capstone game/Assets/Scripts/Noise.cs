@@ -47,13 +47,13 @@ public class Noise : MonoBehaviour
             //  Debug.Log("nothing");
             }
             else if(exe == 10 && why == 10 && zed == 0){
-              Instantiate(prefabs[2], test, Quaternion.Euler(-90, 0, 0));
+              Instantiate(prefabs[4], test, Quaternion.Euler(-90, 0, 0));
             }
             else if(exe == 0 && why == 10 && zed == 10){
-              Instantiate(prefabs[2], test, Quaternion.Euler(-90, 0, -90));
+              Instantiate(prefabs[4], test, Quaternion.Euler(-90, 0, -90));
             }
             else if(exe == 10 && why == 10 && zed == 10){
-              Instantiate(prefabs[0], test, Quaternion.Euler(-90, 0, 0));
+              Instantiate(prefabs[2], test, Quaternion.Euler(-90, 0, 0));
             }
             else{
               d = Mathf.PerlinNoise(test.x/mixer, test.y/mixer);
@@ -62,32 +62,37 @@ public class Noise : MonoBehaviour
               cool = (d+e+f)/3;
               //Debug.Log(cool);
 
-              if((cool < 0.275) || (cool > 0.625) || (0.52 < cool && cool < 0.555)){
+              if((cool < 0.275) || (cool > 0.625)){
             //    Debug.Log("nothing");
               }
-              else if((0.275 < cool && cool < 0.31) || (0.59 < cool && cool < 0.625) || (0.45 < cool && cool < 0.485)){
+              else if((0.275 < cool && cool < 0.2925) || (0.6075 < cool && cool < 0.625)){
                 block = 0;
                 rotx = -90;
                 roty = 0;
               }
-              else if((0.31 < cool && cool < 0.345) || (0.555 < cool && cool < 0.59)){
+              else if((0.2925 < cool && cool < 0.3275) || (0.5725 < cool && cool < 0.6075)){
                 block = 1;
                 rotx = -90;
                 roty = 0;
               }
-              else if((0.345 < cool && cool < 0.38)){
+              else if((0.3275 < cool && cool < 0.3625) || (0.5375 < cool && cool < 0.5725)){
                 block = 2;
+                rotx = -90;
+                roty = 0;
+              }
+              else if((0.3625 < cool && cool < 0.3975) || (0.5025 < cool && cool < 0.5375)){
+                block = 3;
+                rotx = -90;
+                roty = 0;
+              }
+              else if((0.3975 < cool && cool < 0.415) || (0.485 < cool && cool < 0.5025)){
+                block = 4;
                 rotx = -90;
                 roty = Random.Range(0, 4) * 90;
               }
-              else if((0.38 < cool && cool < 0.415) || (0.485 < cool && cool < 0.52)){
-                block = 3;
+              else if((0.415 < cool && cool < 0.45) || (0.45 < cool && cool < 0.485)){
+                block = 5;
                 rotx = 90;
-                roty = 0;
-              }
-              else if((0.415 < cool && cool < 0.45)){
-                block = 4;
-                rotx = -90;
                 roty = 0;
               }
               Instantiate(prefabs[block], new Vector3(exe, why, zed), Quaternion.Euler(rotx, 0, roty));

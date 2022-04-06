@@ -418,7 +418,6 @@ GameObject:
   - component: {fileID: 1495724033}
   - component: {fileID: 1495724032}
   - component: {fileID: 1495724031}
-  - component: {fileID: 1495724034}
   - component: {fileID: 1495724036}
   - component: {fileID: 1495724037}
   - component: {fileID: 1495724038}
@@ -496,24 +495,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!143 &1495724034
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1495724029}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Height: 1
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &1495724036
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -607,11 +588,12 @@ MonoBehaviour:
   cool: 0
   mixer: 0
   prefabs:
+  - {fileID: 950531881556910575, guid: 4ccef5f60b62fd54f87afdbaaaf5ff30, type: 3}
+  - {fileID: 2175806464074592057, guid: fc07f2a32dcb0e24ebd470085342d9dc, type: 3}
   - {fileID: 1360815368569601730, guid: c8a1526f4a3e3c045aa9d27cf28a5437, type: 3}
   - {fileID: 2757806392889189967, guid: fadfbe13e8d913c47b755201fa332dd1, type: 3}
   - {fileID: 6320376498977713980, guid: 156d91e02eccc9c4286373f93bbcd8ab, type: 3}
   - {fileID: 7928435971552772345, guid: b5a09b6490ed8184c8b91bb4a5226914, type: 3}
-  - {fileID: 950531881556910575, guid: 4ccef5f60b62fd54f87afdbaaaf5ff30, type: 3}
   start: {fileID: 2020046688101157315, guid: 8b7025fee3b04984db10f5d318dbce39, type: 3}
   maxX: 20
   maxY: 2
