@@ -11,11 +11,11 @@ public class Noise : MonoBehaviour
     public float d, e, f, cool, mixer;
 
     public GameObject[] prefabs;
-    public GameObject start;
+    public GameObject start, anemone;
   //  [Range(0, 200)]
     public int maxX, maxY, maxZ;
     public int[] xpos, ypos, zpos;
-    public int block, rotx, roty, randrot;
+    public int block, rotx, roty, randrot, coin;
 
     void Start(){
     //  maxX =
@@ -44,7 +44,7 @@ public class Noise : MonoBehaviour
               Instantiate(start, test, Quaternion.Euler(-90, 0, 0));
             }
             else if(exe == 0 && why == 10 && zed == 0){
-            //  Debug.Log("nothing");
+              Debug.Log("nothing");
             }
             else if(exe == 10 && why == 10 && zed == 0){
               Instantiate(prefabs[4], test, Quaternion.Euler(-90, 0, 0));
@@ -63,7 +63,11 @@ public class Noise : MonoBehaviour
               //Debug.Log(cool);
 
               if((cool < 0.275) || (cool > 0.625)){
-            //    Debug.Log("nothing");
+                coin = Random.Range(0, 2);
+                if(coin == 1){
+                  Instantiate(anemone, test, Quaternion.identity);
+                  Debug.Log("aaaaaaa");
+                }
               }
               else if((0.275 < cool && cool < 0.2925) || (0.6075 < cool && cool < 0.625)){
                 block = 0;
