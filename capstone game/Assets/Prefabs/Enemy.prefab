@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 3758972107496353814}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 2, z: -15}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8274660579565801009}
@@ -128,6 +128,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75c0725547ca0cd49a7cc832fbf1ce6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  up:
+    serializedVersion: 2
+    m_Bits: 0
+  down:
+    serializedVersion: 2
+    m_Bits: 0
+  height: 0
+  myHeight: 0
+  shouldMove: 0
+  locations: 
+  picker: 0
+  speed: 0
+  toMove: {x: 0, y: 0, z: 0}
+  newSpot: {x: 0, y: 0, z: 0}
 --- !u!1 &6173847217298721022
 GameObject:
   m_ObjectHideFlags: 0

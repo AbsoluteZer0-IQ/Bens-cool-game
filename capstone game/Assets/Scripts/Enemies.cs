@@ -5,15 +5,17 @@ using UnityEngine;
 public class Enemies : MonoBehaviour
 {
     public LayerMask up, down;
-    public bool height, myHeight;
-    public List<int> locations;
-    public int picker, speed = 10;
-    public Vector3 toMove = new Vector3(5, 0, 0);
+    public bool height, myHeight, shouldMove;
+    public List<int> locations = new List<int>();
+    public int picker;
+    [Range(0, 100)]
+    public int speed;
+    public Vector3 toMove, newSpot;
 
     void Start(){
       up = LayerMask.GetMask("High");
       down = LayerMask.GetMask("Low");
-      Vector3.MoveTowards(transform.position, transform.position + toMove, speed);
+      shouldMove = false;
     }
 
     void OnTriggerEnter(Collider other){
@@ -22,11 +24,17 @@ public class Enemies : MonoBehaviour
       }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.E)){
+          locations.Clear();
           Look();
+        }
+        if(shouldMove){
+          transform.position = Vector3.MoveTowards(transform.position, newSpot, speed * Time.deltaTime);
+        }
+        if(transform.position == newSpot){
+          shouldMove = false;
         }
     }
 
@@ -37,7 +45,6 @@ public class Enemies : MonoBehaviour
         else if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), 10f, down)){
           myHeight = false;
         }
-        Debug.Log(myHeight);
 
         if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), 10f, up)){
           height = true;
@@ -75,7 +82,6 @@ public class Enemies : MonoBehaviour
             locations.Add(6);
           }
         }
-        Debug.Log(height);
         if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back), 10f, up)){
           height = true;
           if(myHeight == height){
@@ -88,33 +94,38 @@ public class Enemies : MonoBehaviour
             locations.Add(8);
           }
         }
+        Debug.Log("it is" + locations.Count);
         picker = Random.Range(0, locations.Count);
-        switch(picker){
+        Debug.Log(picker);
+        switch(locations[picker]){
           case 1:
           case 2:
             toMove = new Vector3(0, 0, 10);
-            Vector3.MoveTowards(transform.position, toMove, speed * Time.deltaTime);
+            newSpot = toMove + transform.position;
+            shouldMove = true;
             Debug.Log("for");
             break;
           case 3:
           case 4:
             toMove = new Vector3(-10, 0, 0);
-            Vector3.MoveTowards(transform.position, toMove, speed * Time.deltaTime);
+            newSpot = toMove + transform.position;
+            shouldMove = true;
             Debug.Log("left");
             break;
           case 5:
           case 6:
             toMove = new Vector3(10, 0, 0);
-            Vector3.MoveTowards(transform.position, toMove, speed * Time.deltaTime);
+            newSpot = toMove + transform.position;
+            shouldMove = true;
             Debug.Log("right");
             break;
           case 7:
           case 8:
             toMove = new Vector3(0, 0, -10);
-            Vector3.MoveTowards(transform.position, toMove, speed * Time.deltaTime);
+            newSpot = toMove + transform.position;
+            shouldMove = true;
             Debug.Log("back");
             break;
         }
-        locations.Clear();
     }
 }
