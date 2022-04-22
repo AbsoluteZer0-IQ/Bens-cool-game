@@ -65,7 +65,7 @@ public class Noise : MonoBehaviour
               if((cool < 0.275) || (cool > 0.625)){
                 coin = Random.Range(0, 2);
                 if(coin == 1){
-                  Instantiate(anemone, test, Quaternion.identity);
+                //  Instantiate(anemone, test, Quaternion.identity);
                   Debug.Log("aaaaaaa");
                 }
               }

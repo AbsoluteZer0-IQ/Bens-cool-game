@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemies : MonoBehaviour
 {
     public LayerMask up, down;
-    public bool height, myHeight, shouldMove;
+    public bool height, myHeight, shouldMove = false;
     public List<int> locations = new List<int>();
     public int picker;
     [Range(0, 100)]
@@ -15,7 +15,7 @@ public class Enemies : MonoBehaviour
     void Start(){
       up = LayerMask.GetMask("High");
       down = LayerMask.GetMask("Low");
-      shouldMove = false;
+      StartCoroutine(WaitMove());
     }
 
     void OnTriggerEnter(Collider other){
@@ -26,15 +26,12 @@ public class Enemies : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E)){
-          locations.Clear();
-          Look();
-        }
         if(shouldMove){
           transform.position = Vector3.MoveTowards(transform.position, newSpot, speed * Time.deltaTime);
         }
         if(transform.position == newSpot){
           shouldMove = false;
+          StartCoroutine(WaitMove());
         }
     }
 
@@ -94,7 +91,6 @@ public class Enemies : MonoBehaviour
             locations.Add(8);
           }
         }
-        Debug.Log("it is" + locations.Count);
         picker = Random.Range(0, locations.Count);
         Debug.Log(picker);
         switch(locations[picker]){
@@ -103,29 +99,33 @@ public class Enemies : MonoBehaviour
             toMove = new Vector3(0, 0, 10);
             newSpot = toMove + transform.position;
             shouldMove = true;
-            Debug.Log("for");
             break;
           case 3:
           case 4:
             toMove = new Vector3(-10, 0, 0);
             newSpot = toMove + transform.position;
             shouldMove = true;
-            Debug.Log("left");
             break;
           case 5:
           case 6:
             toMove = new Vector3(10, 0, 0);
             newSpot = toMove + transform.position;
             shouldMove = true;
-            Debug.Log("right");
             break;
           case 7:
           case 8:
             toMove = new Vector3(0, 0, -10);
             newSpot = toMove + transform.position;
             shouldMove = true;
-            Debug.Log("back");
             break;
         }
+    }
+
+    IEnumerator WaitMove(){
+      Debug.Log("waiting");
+      yield return new WaitForSeconds(2);
+      locations.Clear();
+      Look();
+      StopCoroutine(WaitMove());
     }
 }
