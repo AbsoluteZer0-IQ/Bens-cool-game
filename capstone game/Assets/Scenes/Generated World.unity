@@ -594,6 +594,7 @@ MonoBehaviour:
   - {fileID: 2757806392889189967, guid: fadfbe13e8d913c47b755201fa332dd1, type: 3}
   - {fileID: 6320376498977713980, guid: 156d91e02eccc9c4286373f93bbcd8ab, type: 3}
   - {fileID: 7928435971552772345, guid: b5a09b6490ed8184c8b91bb4a5226914, type: 3}
+  - {fileID: 3758972107496353814, guid: e2386bb7b20fc904d9f3053a09e339b3, type: 3}
   start: {fileID: 2020046688101157315, guid: 8b7025fee3b04984db10f5d318dbce39, type: 3}
   anemone: {fileID: 3758972107496353814, guid: e2386bb7b20fc904d9f3053a09e339b3, type: 3}
   maxX: 10

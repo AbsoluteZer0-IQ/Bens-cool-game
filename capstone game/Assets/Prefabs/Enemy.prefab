@@ -137,11 +137,15 @@ MonoBehaviour:
   height: 0
   myHeight: 0
   shouldMove: 0
+  help: 0
+  helpTwo: 1
   locations: 
   picker: 0
-  speed: 0
+  speed: 5
   toMove: {x: 0, y: 0, z: 0}
   newSpot: {x: 0, y: 0, z: 0}
+  howFar: 0
+  closeness: 50
 --- !u!1 &6173847217298721022
 GameObject:
   m_ObjectHideFlags: 0

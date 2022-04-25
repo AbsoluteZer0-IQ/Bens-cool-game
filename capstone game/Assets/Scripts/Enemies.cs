@@ -5,17 +5,17 @@ using UnityEngine;
 public class Enemies : MonoBehaviour
 {
     public LayerMask up, down;
-    public bool height, myHeight, shouldMove = false;
+    public bool height, myHeight, shouldMove = false, help = false, helpTwo = true;
     public List<int> locations = new List<int>();
     public int picker;
     [Range(0, 100)]
     public int speed;
     public Vector3 toMove, newSpot;
+    public float howFar, closeness;
 
     void Start(){
       up = LayerMask.GetMask("High");
       down = LayerMask.GetMask("Low");
-      StartCoroutine(WaitMove());
     }
 
     void OnTriggerEnter(Collider other){
@@ -26,10 +26,16 @@ public class Enemies : MonoBehaviour
 
     void Update()
     {
+        howFar = Vector3.Distance(GameObject.Find("Player").transform.position, transform.position);
+        if(howFar < closeness && helpTwo){
+          helpTwo = false;
+          StartCoroutine(WaitMove());
+        }
         if(shouldMove){
           transform.position = Vector3.MoveTowards(transform.position, newSpot, speed * Time.deltaTime);
         }
-        if(transform.position == newSpot){
+        if(transform.position == newSpot && help && howFar < closeness){
+          help = false;
           shouldMove = false;
           StartCoroutine(WaitMove());
         }
@@ -42,7 +48,7 @@ public class Enemies : MonoBehaviour
         else if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), 10f, down)){
           myHeight = false;
         }
-
+        Debug.Log(myHeight);
         if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), 10f, up)){
           height = true;
           if(myHeight == height){
@@ -92,7 +98,6 @@ public class Enemies : MonoBehaviour
           }
         }
         picker = Random.Range(0, locations.Count);
-        Debug.Log(picker);
         switch(locations[picker]){
           case 1:
           case 2:
@@ -122,10 +127,10 @@ public class Enemies : MonoBehaviour
     }
 
     IEnumerator WaitMove(){
-      Debug.Log("waiting");
-      yield return new WaitForSeconds(2);
+      yield return new WaitForSeconds(1);
       locations.Clear();
       Look();
+      help = true;
       StopCoroutine(WaitMove());
     }
 }
