@@ -28,6 +28,7 @@ public class NewMove : MonoBehaviour
     //    script = GameObject.Find("Creator").GetComponent<Generation>();
         transform.position = new Vector3(0, 6, 0);
       }
+      Debug.Log(Mathf.Round(273.67f));
     }
     void OnTriggerEnter(Collider other){
       if(other.CompareTag("Ground")){
@@ -55,7 +56,17 @@ public class NewMove : MonoBehaviour
       if(other.CompareTag("Kill")){
         SceneManager.LoadScene(0);
       }
+      if(other.CompareTag("StartEnemy")){
+        other.GetComponent<Enemies>().enabled = true;
+      }
     }
+    void OnTriggerExit(Collider other){
+      if(other.CompareTag("StartEnemy")){
+        float guyX = Mathf.Round(other.transform.parent.gameObject.transform.position.x);
+        float guyZ = Mathf.Round(other.transform.parent.gameObject.transform.position.z);
+      }
+    }
+
     void Update(){
         MouseX = Input.GetAxis("Mouse X") * mSpeed;
         transform.Rotate(MouseY, MouseX, 0);

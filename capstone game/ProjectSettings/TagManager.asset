@@ -9,6 +9,7 @@ TagManager:
   - Basic
   - Tower
   - Maze
+  - StartEnemy
   layers:
   - Default
   - TransparentFX

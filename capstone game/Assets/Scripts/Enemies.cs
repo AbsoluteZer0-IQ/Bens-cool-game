@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemies : MonoBehaviour
 {
     public LayerMask up, down;
-    public bool height, myHeight, shouldMove = false, help = false, helpTwo = true;
+    public bool height, myHeight, shouldMove = false, help = false;
     public List<int> locations = new List<int>();
     public int picker;
     [Range(0, 100)]
@@ -16,6 +16,7 @@ public class Enemies : MonoBehaviour
     void Start(){
       up = LayerMask.GetMask("High");
       down = LayerMask.GetMask("Low");
+      StartCoroutine(WaitMove());
     }
 
     void OnTriggerEnter(Collider other){
@@ -26,11 +27,6 @@ public class Enemies : MonoBehaviour
 
     void Update()
     {
-        howFar = Vector3.Distance(GameObject.Find("Player").transform.position, transform.position);
-        if(howFar < closeness && helpTwo){
-          helpTwo = false;
-          StartCoroutine(WaitMove());
-        }
         if(shouldMove){
           transform.position = Vector3.MoveTowards(transform.position, newSpot, speed * Time.deltaTime);
         }
@@ -42,56 +38,55 @@ public class Enemies : MonoBehaviour
     }
 
     void Look(){
-        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), 10f, up)){
+        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), 3f, up)){
           myHeight = true;
         }
-        else if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), 10f, down)){
+        else if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), 3f, down)){
           myHeight = false;
         }
-        Debug.Log(myHeight);
-        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), 10f, up)){
+        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), 5.1f, up)){
           height = true;
           if(myHeight == height){
             locations.Add(1);
           }
         }
-        else if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), 10f, down)){
+        else if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), 5.1f, down)){
           height = false;
           if(myHeight == height){
             locations.Add(2);
           }
         }
-        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), 10f, up)){
+        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), 5.1f, up)){
           height = true;
           if(myHeight == height){
             locations.Add(3);
           }
         }
-        else if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), 10f, down)){
+        else if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), 5.1f, down)){
           height = false;
           if(myHeight == height){
             locations.Add(4);
           }
         }
-        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), 10f, up)){
+        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), 5.1f, up)){
           height = true;
           if(myHeight == height){
             locations.Add(5);
           }
         }
-        else if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), 10f, down)){
+        else if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), 5.1f, down)){
           height = false;
           if(myHeight == height){
             locations.Add(6);
           }
         }
-        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back), 10f, up)){
+        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back), 5.1f, up)){
           height = true;
           if(myHeight == height){
             locations.Add(7);
           }
         }
-        else if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back), 10f, down)){
+        else if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back), 5.1f, down)){
           height = false;
           if(myHeight == height){
             locations.Add(8);

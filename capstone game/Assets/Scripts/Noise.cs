@@ -11,7 +11,7 @@ public class Noise : MonoBehaviour
     public float d, e, f, cool, mixer;
 
     public GameObject[] prefabs;
-    public GameObject start, anemone;
+    public GameObject start;
   //  [Range(0, 200)]
     public int maxX, maxY, maxZ;
     public int[] xpos, ypos, zpos;
