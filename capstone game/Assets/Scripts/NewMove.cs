@@ -57,7 +57,7 @@ public class NewMove : MonoBehaviour
         SceneManager.LoadScene(0);
       }
       if(other.CompareTag("StartEnemy")){
-        other.GetComponent<Enemies>().enabled = true;
+        other.transform.parent.GetComponent<Enemies>().enabled = true;
       }
     }
     void OnTriggerExit(Collider other){

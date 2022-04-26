@@ -68,7 +68,7 @@ public class Noise : MonoBehaviour
                   block = 6;
                   rotx = 0;
                   roty = 0;
-                //  Debug.Log("aaaaaaa");
+              //    Debug.Log("aaaaaaa");
                 }
               }
               else if((0.275 < cool && cool < 0.2925) || (0.6075 < cool && cool < 0.625)){
