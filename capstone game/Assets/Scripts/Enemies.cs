@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class Enemies : MonoBehaviour
 {
-    public LayerMask up, down;
-    public bool height, myHeight, shouldMove = false, help = false;
+    public bool myHeight, shouldMove = false, help = false;
     public List<int> locations = new List<int>();
     public int picker;
     [Range(0, 100)]
     public int speed;
     public Vector3 toMove, newSpot;
     public float howFar, closeness;
+    public RaycastHit whatHit;
 
     void Start(){
-      up = LayerMask.GetMask("High");
-      down = LayerMask.GetMask("Low");
       StartCoroutine(WaitMove());
     }
 
@@ -38,60 +36,64 @@ public class Enemies : MonoBehaviour
     }
 
     void Look(){
-        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), 3f, up)){
-          myHeight = true;
-        }
-        else if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), 3f, down)){
-          myHeight = false;
-        }
-        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), 5.1f, up)){
-          height = true;
-          if(myHeight == height){
-            locations.Add(1);
+        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out whatHit, 2f)){
+          if(whatHit.transform.gameObject.layer == LayerMask.NameToLayer("High")){
+            myHeight = true;
+          }
+          else if(whatHit.transform.gameObject.layer == LayerMask.NameToLayer("Low")){
+            myHeight = false;
           }
         }
-        else if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), 5.1f, down)){
-          height = false;
-          if(myHeight == height){
-            locations.Add(2);
+        Debug.Log(myHeight);
+        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out whatHit, 10f)){
+          if(whatHit.transform.gameObject.layer == LayerMask.NameToLayer("High")){
+            if(myHeight == true){
+              locations.Add(1);
+            }
+          }
+          else if(whatHit.transform.gameObject.layer == LayerMask.NameToLayer("Low")){
+            if(myHeight == false){
+              locations.Add(2);
+            }
           }
         }
-        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), 5.1f, up)){
-          height = true;
-          if(myHeight == height){
-            locations.Add(3);
+        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out whatHit, 10f)){
+          if(whatHit.transform.gameObject.layer == LayerMask.NameToLayer("High")){
+            if(myHeight == true){
+              locations.Add(3);
+            }
+          }
+          else if(whatHit.collider.gameObject.layer == LayerMask.NameToLayer("Low")){
+            if(myHeight == false){
+              locations.Add(4);
+            }
           }
         }
-        else if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), 5.1f, down)){
-          height = false;
-          if(myHeight == height){
-            locations.Add(4);
+        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), out whatHit, 10f)){
+          if(whatHit.transform.gameObject.layer == LayerMask.NameToLayer("High")){
+            if(myHeight == true){
+              locations.Add(5);
+            }
+          }
+          else if(whatHit.transform.gameObject.layer == LayerMask.NameToLayer("Low")){
+            if(myHeight == false){
+              locations.Add(6);
+            }
           }
         }
-        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), 5.1f, up)){
-          height = true;
-          if(myHeight == height){
-            locations.Add(5);
+        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back), out whatHit, 10f)){
+          if(whatHit.transform.gameObject.layer == LayerMask.NameToLayer("High")){
+            if(myHeight == true){
+              locations.Add(7);
+            }
+          }
+          else if(whatHit.transform.gameObject.layer == LayerMask.NameToLayer("Low")){
+            if(myHeight == false){
+              locations.Add(8);
+            }
           }
         }
-        else if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), 5.1f, down)){
-          height = false;
-          if(myHeight == height){
-            locations.Add(6);
-          }
-        }
-        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back), 5.1f, up)){
-          height = true;
-          if(myHeight == height){
-            locations.Add(7);
-          }
-        }
-        else if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back), 5.1f, down)){
-          height = false;
-          if(myHeight == height){
-            locations.Add(8);
-          }
-        }
+        Debug.Log(locations.Count);
         picker = Random.Range(0, locations.Count);
         switch(locations[picker]){
           case 1:

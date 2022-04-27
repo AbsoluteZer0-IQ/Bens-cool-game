@@ -28,7 +28,6 @@ public class NewMove : MonoBehaviour
     //    script = GameObject.Find("Creator").GetComponent<Generation>();
         transform.position = new Vector3(0, 6, 0);
       }
-      Debug.Log(Mathf.Round(273.67f));
     }
     void OnTriggerEnter(Collider other){
       if(other.CompareTag("Ground")){

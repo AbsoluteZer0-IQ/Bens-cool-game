@@ -44,7 +44,6 @@ public class Noise : MonoBehaviour
               Instantiate(start, test, Quaternion.Euler(-90, 0, 0));
             }
             else if(exe == 0 && why == 10 && zed == 0){
-              Debug.Log("nothing");
             }
             else if(exe == 10 && why == 10 && zed == 0){
               Instantiate(prefabs[4], test, Quaternion.Euler(-90, 0, 0));
