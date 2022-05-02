@@ -10,7 +10,6 @@ public class Enemies : MonoBehaviour
     [Range(0, 100)]
     public int speed;
     public Vector3 toMove, newSpot;
-    public float howFar, closeness;
     public RaycastHit whatHit;
 
     void Start(){
@@ -18,17 +17,16 @@ public class Enemies : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other){
-      if(other.CompareTag("Kill") || other.CompareTag("Stair")){
+      if(other.CompareTag("Kill")){
         Destroy(gameObject);
       }
     }
-
     void Update()
     {
         if(shouldMove){
           transform.position = Vector3.MoveTowards(transform.position, newSpot, speed * Time.deltaTime);
         }
-        if(transform.position == newSpot && help && howFar < closeness){
+        if(transform.position == newSpot && help){
           help = false;
           shouldMove = false;
           StartCoroutine(WaitMove());
@@ -37,7 +35,6 @@ public class Enemies : MonoBehaviour
 
     void Look(){
         if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out whatHit, 2f)){
-          Debug.Log(whatHit.collider.gameObject.name);
           if(whatHit.collider.gameObject.layer == LayerMask.NameToLayer("High")){
             myHeight = true;
           }
@@ -45,7 +42,6 @@ public class Enemies : MonoBehaviour
             myHeight = false;
           }
         }
-        Debug.Log(myHeight);
         if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out whatHit, 10f)){
           if(whatHit.collider.gameObject.layer == LayerMask.NameToLayer("High")){
             if(myHeight == true){
@@ -94,10 +90,10 @@ public class Enemies : MonoBehaviour
             }
           }
         }
-        picker = Random.Range(0, locations.Count);
         if(locations.Count == 0){
           Destroy(GetComponent<Enemies>());
         }
+        picker = Random.Range(0, locations.Count);
         switch(locations[picker]){
           case 1:
           case 2:

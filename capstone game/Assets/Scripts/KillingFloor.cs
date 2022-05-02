@@ -14,4 +14,10 @@ public class KillingFloor : MonoBehaviour
         GetComponent<BoxCollider>().size = new Vector3(Mathf.Pow(script.maxX, 2) * script.maxY, 1f, Mathf.Pow(script.maxZ, 2) * script.maxY);
     }
 
+    void OnTriggerEnter(Collider other){
+      if(other.CompareTag("Enemy")){
+        Destroy(other.gameObject);
+      }
+    }
+
 }

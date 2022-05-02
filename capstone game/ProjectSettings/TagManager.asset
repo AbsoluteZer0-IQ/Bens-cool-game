@@ -11,6 +11,7 @@ TagManager:
   - Maze
   - StartEnemy
   - Stair
+  - Enemy
   layers:
   - Default
   - TransparentFX
