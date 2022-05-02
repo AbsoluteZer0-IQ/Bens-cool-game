@@ -18,7 +18,7 @@ public class Enemies : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other){
-      if(other.CompareTag("Kill")){
+      if(other.CompareTag("Kill") || other.CompareTag("Stair")){
         Destroy(gameObject);
       }
     }
@@ -37,28 +37,29 @@ public class Enemies : MonoBehaviour
 
     void Look(){
         if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out whatHit, 2f)){
-          if(whatHit.transform.gameObject.layer == LayerMask.NameToLayer("High")){
+          Debug.Log(whatHit.collider.gameObject.name);
+          if(whatHit.collider.gameObject.layer == LayerMask.NameToLayer("High")){
             myHeight = true;
           }
-          else if(whatHit.transform.gameObject.layer == LayerMask.NameToLayer("Low")){
+          else if(whatHit.collider.gameObject.layer == LayerMask.NameToLayer("Low")){
             myHeight = false;
           }
         }
         Debug.Log(myHeight);
         if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out whatHit, 10f)){
-          if(whatHit.transform.gameObject.layer == LayerMask.NameToLayer("High")){
+          if(whatHit.collider.gameObject.layer == LayerMask.NameToLayer("High")){
             if(myHeight == true){
               locations.Add(1);
             }
           }
-          else if(whatHit.transform.gameObject.layer == LayerMask.NameToLayer("Low")){
+          else if(whatHit.collider.gameObject.layer == LayerMask.NameToLayer("Low")){
             if(myHeight == false){
               locations.Add(2);
             }
           }
         }
         if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out whatHit, 10f)){
-          if(whatHit.transform.gameObject.layer == LayerMask.NameToLayer("High")){
+          if(whatHit.collider.gameObject.layer == LayerMask.NameToLayer("High")){
             if(myHeight == true){
               locations.Add(3);
             }
@@ -70,31 +71,33 @@ public class Enemies : MonoBehaviour
           }
         }
         if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), out whatHit, 10f)){
-          if(whatHit.transform.gameObject.layer == LayerMask.NameToLayer("High")){
+          if(whatHit.collider.gameObject.layer == LayerMask.NameToLayer("High")){
             if(myHeight == true){
               locations.Add(5);
             }
           }
-          else if(whatHit.transform.gameObject.layer == LayerMask.NameToLayer("Low")){
+          else if(whatHit.collider.gameObject.layer == LayerMask.NameToLayer("Low")){
             if(myHeight == false){
               locations.Add(6);
             }
           }
         }
         if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back), out whatHit, 10f)){
-          if(whatHit.transform.gameObject.layer == LayerMask.NameToLayer("High")){
+          if(whatHit.collider.gameObject.layer == LayerMask.NameToLayer("High")){
             if(myHeight == true){
               locations.Add(7);
             }
           }
-          else if(whatHit.transform.gameObject.layer == LayerMask.NameToLayer("Low")){
+          else if(whatHit.collider.gameObject.layer == LayerMask.NameToLayer("Low")){
             if(myHeight == false){
               locations.Add(8);
             }
           }
         }
-        Debug.Log(locations.Count);
         picker = Random.Range(0, locations.Count);
+        if(locations.Count == 0){
+          Destroy(GetComponent<Enemies>());
+        }
         switch(locations[picker]){
           case 1:
           case 2:

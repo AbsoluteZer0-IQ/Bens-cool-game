@@ -55,15 +55,6 @@ public class NewMove : MonoBehaviour
       if(other.CompareTag("Kill")){
         SceneManager.LoadScene(0);
       }
-      if(other.CompareTag("StartEnemy")){
-        other.transform.parent.GetComponent<Enemies>().enabled = true;
-      }
-    }
-    void OnTriggerExit(Collider other){
-      if(other.CompareTag("StartEnemy")){
-        float guyX = Mathf.Round(other.transform.parent.gameObject.transform.position.x);
-        float guyZ = Mathf.Round(other.transform.parent.gameObject.transform.position.z);
-      }
     }
 
     void Update(){

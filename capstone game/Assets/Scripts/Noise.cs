@@ -59,18 +59,19 @@ public class Noise : MonoBehaviour
               e = Mathf.PerlinNoise(test.x/mixer, test.z/mixer);
               f = Mathf.PerlinNoise(test.y/mixer, test.z/mixer);
               cool = (d+e+f)/3;
+              coin = Random.Range(0, 50);
               //Debug.Log(cool);
 
-              if((cool < 0.275) || (cool > 0.625)){
-                coin = Random.Range(0, 2);
-                if(coin == 1){
-                  block = 6;
-                  rotx = 0;
-                  roty = 0;
-              //    Debug.Log("aaaaaaa");
-                }
-              }
-              else if((0.275 < cool && cool < 0.2925) || (0.6075 < cool && cool < 0.625)){
+            //  if((cool < 0.275) || (cool > 0.625)){
+          //      coin = Random.Range(0, 5);
+          //      if(coin == 1){
+          //        block = 6;
+          //        rotx = 0;
+          //        roty = 0;
+          //        Debug.Log("aaaaaaa");
+          //      }
+          //    }
+              if((0.275 < cool && cool < 0.2925) || (0.6075 < cool && cool < 0.625)){
                 block = 0;
                 rotx = -90;
                 roty = 0;
@@ -101,6 +102,10 @@ public class Noise : MonoBehaviour
                 roty = 0;
               }
               Instantiate(prefabs[block], new Vector3(exe, why, zed), Quaternion.Euler(rotx, 0, roty));
+              if(coin == 15){
+                Instantiate(prefabs[6], new Vector3(exe, why, zed), Quaternion.Euler(0, 0, 0));
+                Debug.Log("bbbbbb");
+              }
             }
             }
           }
