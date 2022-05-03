@@ -22,6 +22,7 @@ public class NewMove : MonoBehaviour
     void Start(){
       onFloor = false;
       Cursor.lockState = CursorLockMode.Locked;
+      Application.targetFrameRate = -1;
       rb = GetComponent<Rigidbody>();
       if(SceneManager.GetActiveScene().buildIndex == 1){
         script = GameObject.Find("NoiseMaker").GetComponent<Noise>();

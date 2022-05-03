@@ -6,7 +6,17 @@ ModelImporter:
   - first:
       74: -623603649343465320
     second: Scene
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: OPTICAL
+    second: {fileID: 2100000, guid: 1f5639dd82c513143b27a86b9eaf85ba, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tix
+    second: {fileID: 2100000, guid: 4644581dcf6103e4bbaaa1a882bac635, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
