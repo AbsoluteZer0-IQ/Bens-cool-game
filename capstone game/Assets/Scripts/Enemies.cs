@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Enemies : MonoBehaviour
 {
-    public bool myHeight, shouldMove = false, help = false;
+    public bool myHeight, shouldMove = false, help = false, watcher = false;
     public List<int> locations = new List<int>();
-    public int picker;
-    [Range(0, 100)]
-    public int speed;
-    public Vector3 toMove, newSpot;
+    public int picker, speed;
+    public Vector3 toMove, newSpot, lower = new Vector3(0, 1.5f, 0);
     public RaycastHit whatHit;
 
     void Start(){
+      transform.rotation = Quaternion.Euler(0, 0, 0);
+      speed = Random.Range(5, 51);
       StartCoroutine(WaitMove());
     }
 
@@ -34,7 +34,7 @@ public class Enemies : MonoBehaviour
     }
 
     void Look(){
-        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out whatHit, 2f)){
+        if(Physics.Raycast(transform.position - lower, transform.TransformDirection(Vector3.down), out whatHit, 2f)){
           if(whatHit.collider.gameObject.layer == LayerMask.NameToLayer("High")){
             myHeight = true;
           }
@@ -42,7 +42,7 @@ public class Enemies : MonoBehaviour
             myHeight = false;
           }
         }
-        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out whatHit, 10f)){
+        if(Physics.Raycast(transform.position - lower, transform.TransformDirection(Vector3.forward), out whatHit, 10f)){
           if(whatHit.collider.gameObject.layer == LayerMask.NameToLayer("High")){
             if(myHeight == true){
               locations.Add(1);
@@ -54,7 +54,7 @@ public class Enemies : MonoBehaviour
             }
           }
         }
-        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out whatHit, 10f)){
+        if(Physics.Raycast(transform.position - lower, transform.TransformDirection(Vector3.left), out whatHit, 10f)){
           if(whatHit.collider.gameObject.layer == LayerMask.NameToLayer("High")){
             if(myHeight == true){
               locations.Add(3);
@@ -66,7 +66,7 @@ public class Enemies : MonoBehaviour
             }
           }
         }
-        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), out whatHit, 10f)){
+        if(Physics.Raycast(transform.position - lower, transform.TransformDirection(Vector3.right), out whatHit, 10f)){
           if(whatHit.collider.gameObject.layer == LayerMask.NameToLayer("High")){
             if(myHeight == true){
               locations.Add(5);
@@ -78,7 +78,7 @@ public class Enemies : MonoBehaviour
             }
           }
         }
-        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back), out whatHit, 10f)){
+        if(Physics.Raycast(transform.position - lower, transform.TransformDirection(Vector3.back), out whatHit, 10f)){
           if(whatHit.collider.gameObject.layer == LayerMask.NameToLayer("High")){
             if(myHeight == true){
               locations.Add(7);
@@ -91,6 +91,7 @@ public class Enemies : MonoBehaviour
           }
         }
         if(locations.Count == 0){
+          watcher = true;
           Destroy(GetComponent<Enemies>());
         }
         picker = Random.Range(0, locations.Count);

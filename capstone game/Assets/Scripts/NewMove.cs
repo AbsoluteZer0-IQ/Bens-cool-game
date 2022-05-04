@@ -18,6 +18,7 @@ public class NewMove : MonoBehaviour
     public bool onFloor;
     public int test = 0;
     public Rigidbody rb;
+    public GameObject thing;
 
     void Start(){
       onFloor = false;
@@ -56,9 +57,16 @@ public class NewMove : MonoBehaviour
       if(other.CompareTag("Kill")){
         SceneManager.LoadScene(0);
       }
+      if(other.CompareTag("StartEnemy")){
+        other.GetComponent<Transform>().GetChild(0).gameObject.AddComponent<Enemies>();;
+      }
     }
 
     void Update(){
+        if(transform.position.y < -5){
+          SceneManager.LoadScene(0);
+        }
+
         MouseX = Input.GetAxis("Mouse X") * mSpeed;
         transform.Rotate(MouseY, MouseX, 0);
 
