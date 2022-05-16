@@ -18,9 +18,6 @@ public class Noise : MonoBehaviour
     public int block, rotx, roty, randrot, coin;
 
     void Start(){
-    //  maxX =
-    //  maxY =
-    //  maxZ =
 
       mixer = (Random.Range(10, 101));
 
@@ -104,7 +101,6 @@ public class Noise : MonoBehaviour
               Instantiate(prefabs[block], new Vector3(exe, why, zed), Quaternion.Euler(rotx, 0, roty));
               if(coin == 15){
                 Instantiate(prefabs[6], new Vector3(exe, why, zed), Quaternion.Euler(0, 0, 0));
-                Debug.Log("bbbbbb");
               }
             }
             }

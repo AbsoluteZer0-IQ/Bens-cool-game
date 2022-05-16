@@ -182,6 +182,18 @@ PrefabInstance:
       propertyPath: bullet
       value: 
       objectReference: {fileID: 4320444947158636753, guid: e2117a47bf2bf0e41a8d396e1057e6cf, type: 3}
+    - target: {fileID: 5899986158271311117, guid: b663a6a78e8c254428ff9af26f8669cd, type: 3}
+      propertyPath: m_Size.x
+      value: 4.55847
+      objectReference: {fileID: 0}
+    - target: {fileID: 5899986158271311117, guid: b663a6a78e8c254428ff9af26f8669cd, type: 3}
+      propertyPath: m_Center.x
+      value: -0.8085589
+      objectReference: {fileID: 0}
+    - target: {fileID: 5899986158271311117, guid: b663a6a78e8c254428ff9af26f8669cd, type: 3}
+      propertyPath: m_Center.z
+      value: 3.1046976e-16
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b663a6a78e8c254428ff9af26f8669cd, type: 3}
 --- !u!1 &587122985

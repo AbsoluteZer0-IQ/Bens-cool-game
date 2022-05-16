@@ -6,22 +6,19 @@ using UnityEngine.SceneManagement;
 public class NewMove : MonoBehaviour
 {
     [Range(0, 100)]
-    public int speed;
-    [Range(0, 100)]
-    public int jSpeed;
-    [Range(0, 100)]
-    public int mSpeed;
+    public int speed, jSpeed, mSpeed, dSpeed;
     public float MouseX, MouseY, jUp, jDown;
     public Vector3 look, mover;
     //public Generation script;
     public Noise script;
-    public bool onFloor;
+    public bool onFloor, zoom = false;
     public int test = 0;
     public Rigidbody rb;
     public GameObject thing;
 
     void Start(){
       onFloor = false;
+      zoom = true;
       Cursor.lockState = CursorLockMode.Locked;
       Application.targetFrameRate = -1;
       rb = GetComponent<Rigidbody>();
@@ -79,11 +76,30 @@ public class NewMove : MonoBehaviour
         if(Input.GetButtonDown("Jump") && onFloor){
           onFloor = false;
           rb.velocity = Vector3.up * jSpeed;
+          StartCoroutine(Cooldown());
         }
+        if(Input.GetKeyDown("left shift") && zoom){
+          zoom = false;
+          rb.velocity = transform.forward * dSpeed;
+        }
+
       }
     void FixedUpdate(){
         if(Input.GetAxisRaw("Vertical") == 1){
         GetComponent<Rigidbody>().MovePosition(transform.position + transform.forward * Time.deltaTime * speed);
         }
+        if(Input.GetAxisRaw("Vertical") == -1){
+        GetComponent<Rigidbody>().MovePosition(transform.position + -transform.forward * Time.deltaTime * speed);
+        }
+        if(Input.GetAxisRaw("Horizontal") == 1){
+        GetComponent<Rigidbody>().MovePosition(transform.position + transform.right * Time.deltaTime * speed);
+        }
+        if(Input.GetAxisRaw("Horizontal") == -1){
+        GetComponent<Rigidbody>().MovePosition(transform.position + -transform.right * Time.deltaTime * speed);
+        }
+    }
+    IEnumerator Cooldown(){
+      yield return new WaitForSeconds(3);
+      zoom = true;
     }
 }

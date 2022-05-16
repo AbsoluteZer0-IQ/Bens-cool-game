@@ -10,8 +10,8 @@ TagManager:
   - Tower
   - Maze
   - StartEnemy
-  - Stair
   - Enemy
+  - Construction
   layers:
   - Default
   - TransparentFX

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemies : MonoBehaviour
 {
-    public bool myHeight, shouldMove = false, help = false, watcher = false;
+    public bool myHeight, shouldMove = false, help = false;
     public List<int> locations = new List<int>();
     public int picker, speed;
     public Vector3 toMove, newSpot, lower = new Vector3(0, 1.5f, 0);
@@ -34,12 +34,15 @@ public class Enemies : MonoBehaviour
     }
 
     void Look(){
-        if(Physics.Raycast(transform.position - lower, transform.TransformDirection(Vector3.down), out whatHit, 2f)){
+        if(Physics.Raycast(transform.position - lower, transform.TransformDirection(Vector3.down), out whatHit, 3f)){
           if(whatHit.collider.gameObject.layer == LayerMask.NameToLayer("High")){
             myHeight = true;
           }
           else if(whatHit.collider.gameObject.layer == LayerMask.NameToLayer("Low")){
             myHeight = false;
+          }
+          else{
+            Debug.Log("fefwgh");
           }
         }
         if(Physics.Raycast(transform.position - lower, transform.TransformDirection(Vector3.forward), out whatHit, 10f)){
@@ -91,7 +94,6 @@ public class Enemies : MonoBehaviour
           }
         }
         if(locations.Count == 0){
-          watcher = true;
           Destroy(GetComponent<Enemies>());
         }
         picker = Random.Range(0, locations.Count);

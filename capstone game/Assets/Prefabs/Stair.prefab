@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 8503212521225177361}
   m_Layer: 8
   m_Name: Stair
-  m_TagString: Stair
+  m_TagString: Construction
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
