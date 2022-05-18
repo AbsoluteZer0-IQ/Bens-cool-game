@@ -20,7 +20,7 @@ public class Weapon : MonoBehaviour
 
     void Update()
     {
-      transform.Rotate(0, 0, Input.GetAxis("Mouse Y") * script.mSpeed * -1);
+    //  transform.Rotate(0, 0, Input.GetAxis("Mouse Y") * script.mSpeed * -1);
       if(Input.GetMouseButton(0) && !blocker){
         blocker = true;
         StartCoroutine(Fire());
