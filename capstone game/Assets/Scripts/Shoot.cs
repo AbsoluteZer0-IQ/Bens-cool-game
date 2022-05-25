@@ -25,12 +25,23 @@ public class Shoot : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision other){
-      if(other.collider.CompareTag("Construction") || other.collider.CompareTag("Enemy")){
-        Destroy(other.gameObject);
-        Destroy(gameObject);
+      if(speed == 15){
+        if(other.collider.CompareTag("Construction") || other.collider.CompareTag("Enemy")){
+          Destroy(other.gameObject);
+          Destroy(gameObject);
+        }
+        else if(other.collider.CompareTag("Player")){
+          SceneManager.LoadScene(0);
+        }
       }
-      else if(other.collider.CompareTag("Player")){
-        SceneManager.LoadScene(0);
+      else if(speed == 5){
+        if(other.collider.CompareTag("Construction") || other.collider.CompareTag("Enemy")){
+        // put sphere of death instantiate here  
+          Destroy(gameObject);
+        }
+        else if(other.collider.CompareTag("Player")){
+          SceneManager.LoadScene(0);
+        }
       }
     }
 

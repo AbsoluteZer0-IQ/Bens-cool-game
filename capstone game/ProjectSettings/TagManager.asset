@@ -12,6 +12,7 @@ TagManager:
   - StartEnemy
   - Enemy
   - Construction
+  - Sussy
   layers:
   - Default
   - TransparentFX

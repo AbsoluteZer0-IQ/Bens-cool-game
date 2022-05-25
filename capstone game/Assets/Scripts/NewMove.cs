@@ -57,6 +57,9 @@ public class NewMove : MonoBehaviour
       if(other.CompareTag("StartEnemy")){
         other.GetComponent<Transform>().GetChild(0).gameObject.AddComponent<Enemies>();;
       }
+      if(other.CompareTag("Sussy")){
+        Debug.Log("You Win!");
+      }
     }
 
     void Update(){
@@ -82,7 +85,6 @@ public class NewMove : MonoBehaviour
           zoom = false;
           rb.velocity = transform.forward * dSpeed;
         }
-
       }
     void FixedUpdate(){
         if(Input.GetAxisRaw("Vertical") == 1){

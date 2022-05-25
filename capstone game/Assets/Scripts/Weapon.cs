@@ -7,7 +7,7 @@ public class Weapon : MonoBehaviour
 {
     public NewMove script;
     public Animator shoot;
-    public GameObject bullet;
+    public GameObject bullet, bomb;
     public Transform thisTrans;
     public bool blocker = false;
 
@@ -25,12 +25,25 @@ public class Weapon : MonoBehaviour
         blocker = true;
         StartCoroutine(Fire());
       }
+      else if(Input.GetMouseButton(1) && !blocker){
+        blocker = true;
+        StartCoroutine(BigFire());
+      }
     }
 
     IEnumerator Fire(){
       shoot.SetBool("DoThing", true);
       yield return new WaitForSeconds(0.416665f);
       Instantiate(bullet, bullet.transform.position, Quaternion.identity, thisTrans);
+      yield return new WaitForSeconds(0.416665f);
+      shoot.SetBool("DoThing", false);
+      blocker = false;
+      StopCoroutine(Fire());
+    }
+    IEnumerator BigFire(){
+      shoot.SetBool("DoThing", true);
+      yield return new WaitForSeconds(0.416665f);
+      Instantiate(bomb, bomb.transform.position, Quaternion.identity, thisTrans);
       yield return new WaitForSeconds(0.416665f);
       shoot.SetBool("DoThing", false);
       blocker = false;

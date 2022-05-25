@@ -15,7 +15,8 @@ public class Noise : MonoBehaviour
   //  [Range(0, 200)]
     public int maxX, maxY, maxZ;
     public int[] xpos, ypos, zpos;
-    public int block, rotx, roty, randrot, coin;
+    public int block, rotx, roty, randrot, coin, susChance;
+    public bool imposter = true;
 
     void Start(){
 
@@ -57,6 +58,7 @@ public class Noise : MonoBehaviour
               f = Mathf.PerlinNoise(test.y/mixer, test.z/mixer);
               cool = (d+e+f)/3;
               coin = Random.Range(0, 50);
+              susChance = Random.Range(0, 1001);
               //Debug.Log(cool);
 
             //  if((cool < 0.275) || (cool > 0.625)){
@@ -102,9 +104,16 @@ public class Noise : MonoBehaviour
               if(coin == 15){
                 Instantiate(prefabs[6], new Vector3(exe, why, zed), Quaternion.Euler(0, 0, 0));
               }
+              if(coin != 15 && imposter && susChance == 69 && block != 4){
+                imposter = false;
+                Instantiate(prefabs[7], new Vector3(exe, why, zed), Quaternion.Euler(0, 0, 0));
+              }
             }
             }
           }
+        }
+        if(imposter){
+          Instantiate(prefabs[7], new Vector3(exe, why, zed), Quaternion.Euler(0, 0, 0));
         }
       }
   //  void Update()
