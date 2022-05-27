@@ -7,7 +7,7 @@ public class Shoot : MonoBehaviour
 {
     [Range(0, 25)]
     public int speed;
-    public GameObject gun;
+    public GameObject gun, destroyer;
 
     void Start()
     {
@@ -36,7 +36,7 @@ public class Shoot : MonoBehaviour
       }
       else if(speed == 5){
         if(other.collider.CompareTag("Construction") || other.collider.CompareTag("Enemy")){
-        // put sphere of death instantiate here  
+          Instantiate(destroyer, transform.position, Quaternion.identity);
           Destroy(gameObject);
         }
         else if(other.collider.CompareTag("Player")){

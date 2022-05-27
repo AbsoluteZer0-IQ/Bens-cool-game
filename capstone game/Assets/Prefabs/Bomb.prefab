@@ -113,6 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   gun: {fileID: 0}
+  destroyer: {fileID: 6355755308597879762, guid: 15aebe340caf6774faff71f31581f1e8, type: 3}
 --- !u!54 &-221671534870440254
 Rigidbody:
   m_ObjectHideFlags: 0
