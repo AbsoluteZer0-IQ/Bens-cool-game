@@ -29,7 +29,7 @@ public class Generation : MonoBehaviour
           for(int c=0; c<maxZ; c++){
             coin = Random.Range(0, 2);
             if(coin == 1){
-              dice = Random.Range(0, 5);
+              dice = Random.Range(0, 6);
               if(dice == 2){
                 rot = 90;
               }

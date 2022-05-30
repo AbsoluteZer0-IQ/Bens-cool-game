@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GrowBoom : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class GrowBoom : MonoBehaviour
     }
     void OnCollisionEnter(Collision other){
       Debug.Log(other.gameObject.name);
+      if(other.gameObject.name == "Player"){
+        SceneManager.LoadScene(0);
+      }
       Destroy(other.gameObject);
     }
 }

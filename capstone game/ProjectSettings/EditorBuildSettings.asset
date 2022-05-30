@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Generated World.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Hell.unity
+    guid: 08812fccd62c1a94c95c202e2c19c443
   m_configObjects: {}

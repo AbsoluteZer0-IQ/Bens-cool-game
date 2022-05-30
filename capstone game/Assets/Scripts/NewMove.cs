@@ -22,43 +22,54 @@ public class NewMove : MonoBehaviour
       Cursor.lockState = CursorLockMode.Locked;
       Application.targetFrameRate = -1;
       rb = GetComponent<Rigidbody>();
-      if(SceneManager.GetActiveScene().buildIndex == 1){
-        script = GameObject.Find("NoiseMaker").GetComponent<Noise>();
+    //  transform.position = GameObject.Find("Start(Clone)").transform.position + new Vector3(0, 6, 0);
+    //  if(SceneManager.GetActiveScene().buildIndex == 1){
+    //  script = GameObject.Find("NoiseMaker").GetComponent<Noise>();
     //    script = GameObject.Find("Creator").GetComponent<Generation>();
-        transform.position = new Vector3(0, 6, 0);
-      }
+    //  transform.position = script.aboveStart;
+    //  }
     }
     void OnTriggerEnter(Collider other){
       if(other.CompareTag("Ground")){
         onFloor = true;
         test = 0;
       }
-      if(other.CompareTag("Basic")){
+      else if(other.CompareTag("Basic")){
         PlayerPrefs.SetInt("xMax", Random.Range(15, 26));
         PlayerPrefs.SetInt("yMax", Random.Range(15, 26));
         PlayerPrefs.SetInt("zMax", Random.Range(15, 26));
+        PlayerPrefs.SetInt("genType", 0);
         SceneManager.LoadScene(1);
       }
-      if(other.CompareTag("Tower")){
+      else if(other.CompareTag("Tower")){
         PlayerPrefs.SetInt("xMax", Random.Range(5, 11));
         PlayerPrefs.SetInt("yMax", Random.Range(100, 151));
         PlayerPrefs.SetInt("zMax", Random.Range(5, 11));
+        PlayerPrefs.SetInt("genType", 0);
         SceneManager.LoadScene(1);
       }
-      if(other.CompareTag("Maze")){
+      else if(other.CompareTag("Maze")){
         PlayerPrefs.SetInt("xMax", Random.Range(40, 51));
         PlayerPrefs.SetInt("yMax", Random.Range(2, 6));
         PlayerPrefs.SetInt("zMax", Random.Range(40, 51));
+        PlayerPrefs.SetInt("genType", 0);
         SceneManager.LoadScene(1);
       }
-      if(other.CompareTag("Kill")){
+      else if(other.CompareTag("Kill")){
         SceneManager.LoadScene(0);
       }
-      if(other.CompareTag("StartEnemy")){
+      else if(other.CompareTag("StartEnemy")){
         other.GetComponent<Transform>().GetChild(0).gameObject.AddComponent<Enemies>();;
       }
-      if(other.CompareTag("Sussy")){
+      else if(other.CompareTag("Sussy")){
         Debug.Log("You Win!");
+      }
+      else if(other.CompareTag("Classic")){
+        PlayerPrefs.SetInt("genType", 1);
+        SceneManager.LoadScene(1);
+      }
+      else if(other.CompareTag("Gru")){
+        SceneManager.LoadScene(2);
       }
     }
 

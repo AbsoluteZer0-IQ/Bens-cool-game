@@ -7,11 +7,11 @@ public class Noise : MonoBehaviour
 {
     [Range(0, 100)]
     public float exe, why, zed;
-    public Vector3 test;
+    public Vector3 test, startPos, aboveStart, spawn;
     public float d, e, f, cool, mixer;
 
     public GameObject[] prefabs;
-    public GameObject start;
+    public GameObject start, player;
   //  [Range(0, 200)]
     public int maxX, maxY, maxZ;
     public int[] xpos, ypos, zpos;
@@ -19,12 +19,14 @@ public class Noise : MonoBehaviour
     public bool imposter = true;
 
     void Start(){
-
+      player = GameObject.Find("Player");
       mixer = (Random.Range(10, 101));
-
       maxX = PlayerPrefs.GetInt("xMax");
       maxY = PlayerPrefs.GetInt("yMax");
       maxZ = PlayerPrefs.GetInt("zMax");
+      startPos = new Vector3(Random.Range(0, maxX+1) * 10, Random.Range(0, maxY+1) * 10, Random.Range(0, maxZ+1) * 10);
+      aboveStart = new Vector3(startPos.x, startPos.y + 10, startPos.z);
+      player.transform.position = aboveStart;
       xpos = Enumerable.Range(0, maxX + 1).ToArray();
       ypos = Enumerable.Range(0, maxY + 1).ToArray();
       zpos = Enumerable.Range(0, maxZ + 1).ToArray();
@@ -38,20 +40,23 @@ public class Noise : MonoBehaviour
             zed = zpos[c] * 10f;
             test = new Vector3(exe, why, zed);
 
-            if(exe == 0 && why == 0 && zed == 0){
-              Instantiate(start, test, Quaternion.Euler(-90, 0, 0));
-            }
-            else if(exe == 0 && why == 10 && zed == 0){
-            }
-            else if(exe == 10 && why == 10 && zed == 0){
-              Instantiate(prefabs[4], test, Quaternion.Euler(-90, 0, 0));
-            }
-            else if(exe == 0 && why == 10 && zed == 10){
-              Instantiate(prefabs[4], test, Quaternion.Euler(-90, 0, -90));
-            }
-            else if(exe == 10 && why == 10 && zed == 10){
-              Instantiate(prefabs[2], test, Quaternion.Euler(-90, 0, 0));
-            }
+           if(test == startPos){
+             Instantiate(start, test, Quaternion.Euler(-90, 0, 0));
+          }
+          else if(test == aboveStart){
+            Debug.Log(test);
+          }
+        //    else if(exe == 0 && why == 10 && zed == 0){
+      //      }
+      //      else if(exe == 10 && why == 10 && zed == 0){
+      //        Instantiate(prefabs[4], test, Quaternion.Euler(-90, 0, 0));
+        //    }
+      //      else if(exe == 0 && why == 10 && zed == 10){
+      //        Instantiate(prefabs[4], test, Quaternion.Euler(-90, 0, -90));
+        //    }
+        //    else if(exe == 10 && why == 10 && zed == 10){
+        //      Instantiate(prefabs[2], test, Quaternion.Euler(-90, 0, 0));
+        //    }
             else{
               d = Mathf.PerlinNoise(test.x/mixer, test.y/mixer);
               e = Mathf.PerlinNoise(test.x/mixer, test.z/mixer);
