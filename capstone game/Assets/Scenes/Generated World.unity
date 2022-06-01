@@ -5089,6 +5089,7 @@ MonoBehaviour:
   onFloor: 0
   zoom: 0
   test: 0
+  type: 0
   rb: {fileID: 0}
   thing: {fileID: 0}
 --- !u!54 &838490434
@@ -5240,7 +5241,6 @@ MonoBehaviour:
   test: {x: 0, y: 0, z: 0}
   startPos: {x: 0, y: 0, z: 0}
   aboveStart: {x: 0, y: 0, z: 0}
-  spawn: {x: 0, y: 0, z: 0}
   d: 0
   e: 0
   f: 0
@@ -5704,6 +5704,8 @@ MonoBehaviour:
   coin: 0
   dice: 0
   rot: 0
+  susChance: 0
+  spawnSus: 1
 --- !u!4 &2000429094
 Transform:
   m_ObjectHideFlags: 0

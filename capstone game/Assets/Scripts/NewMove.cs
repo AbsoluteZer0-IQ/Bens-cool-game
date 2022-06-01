@@ -12,7 +12,7 @@ public class NewMove : MonoBehaviour
     //public Generation script;
     public Noise script;
     public bool onFloor, zoom = false;
-    public int test = 0;
+    public int test = 0, type;
     public Rigidbody rb;
     public GameObject thing;
 
@@ -62,14 +62,29 @@ public class NewMove : MonoBehaviour
         other.GetComponent<Transform>().GetChild(0).gameObject.AddComponent<Enemies>();;
       }
       else if(other.CompareTag("Sussy")){
-        Debug.Log("You Win!");
+        SceneManager.LoadScene(2);
       }
       else if(other.CompareTag("Classic")){
         PlayerPrefs.SetInt("genType", 1);
+        type = Random.Range(0, 3);
+        switch(type){
+          case 0:
+            PlayerPrefs.SetInt("xMax", Random.Range(15, 26));
+            PlayerPrefs.SetInt("yMax", Random.Range(15, 26));
+            PlayerPrefs.SetInt("zMax", Random.Range(15, 26));
+            break;
+          case 1:
+            PlayerPrefs.SetInt("xMax", Random.Range(5, 11));
+            PlayerPrefs.SetInt("yMax", Random.Range(100, 151));
+            PlayerPrefs.SetInt("zMax", Random.Range(5, 11));
+            break;
+          case 2:
+            PlayerPrefs.SetInt("xMax", Random.Range(40, 51));
+            PlayerPrefs.SetInt("yMax", Random.Range(2, 6));
+            PlayerPrefs.SetInt("zMax", Random.Range(40, 51));
+            break;
+        }
         SceneManager.LoadScene(1);
-      }
-      else if(other.CompareTag("Gru")){
-        SceneManager.LoadScene(2);
       }
     }
 

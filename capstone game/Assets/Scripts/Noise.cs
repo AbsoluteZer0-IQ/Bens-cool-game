@@ -7,7 +7,7 @@ public class Noise : MonoBehaviour
 {
     [Range(0, 100)]
     public float exe, why, zed;
-    public Vector3 test, startPos, aboveStart, spawn;
+    public Vector3 test, startPos, aboveStart;
     public float d, e, f, cool, mixer;
 
     public GameObject[] prefabs;
@@ -118,7 +118,7 @@ public class Noise : MonoBehaviour
           }
         }
         if(imposter){
-          Instantiate(prefabs[7], new Vector3(exe, why, zed), Quaternion.Euler(0, 0, 0));
+          Instantiate(prefabs[7], new Vector3(Random.Range(0, maxX), Random.Range(0, maxY), Random.Range(0, maxZ)), Quaternion.Euler(0, 0, 0));
         }
       }
   //  void Update()

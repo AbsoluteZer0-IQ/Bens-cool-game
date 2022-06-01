@@ -145,6 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spinSpeed: 45
   plyer: {fileID: 0}
+  line: {fileID: 0}
 --- !u!1 &4798411231285637386
 GameObject:
   m_ObjectHideFlags: 0
