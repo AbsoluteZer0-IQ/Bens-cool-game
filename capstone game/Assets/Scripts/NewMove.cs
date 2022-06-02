@@ -11,10 +11,10 @@ public class NewMove : MonoBehaviour
     public Vector3 look, mover;
     //public Generation script;
     public Noise script;
-    public bool onFloor, zoom = false;
+    public bool onFloor, zoom = false, doMenu = false;
     public int test = 0, type;
     public Rigidbody rb;
-    public GameObject thing;
+    public GameObject thing, menu;
 
     void Start(){
       onFloor = false;
@@ -22,6 +22,7 @@ public class NewMove : MonoBehaviour
       Cursor.lockState = CursorLockMode.Locked;
       Application.targetFrameRate = -1;
       rb = GetComponent<Rigidbody>();
+      menu = GameObject.Find("Canvas");
     //  transform.position = GameObject.Find("Start(Clone)").transform.position + new Vector3(0, 6, 0);
     //  if(SceneManager.GetActiveScene().buildIndex == 1){
     //  script = GameObject.Find("NoiseMaker").GetComponent<Noise>();
@@ -111,11 +112,15 @@ public class NewMove : MonoBehaviour
           zoom = false;
           rb.velocity = transform.forward * dSpeed;
         }
-        if(Input.GetKeyDown("escape")){
+        if(Input.GetKeyDown("escape") && !doMenu){
           Cursor.lockState = CursorLockMode.None;
+          menu.GetComponent<CanvasGroup>().alpha = 1;
+          doMenu = true;
         }
-        if(Input.GetMouseButton(0)){
+        else if(Input.GetKeyDown("escape") && doMenu){
           Cursor.lockState = CursorLockMode.Locked;
+          menu.GetComponent<CanvasGroup>().alpha = 0;
+          doMenu = false;
         }
       }
     void FixedUpdate(){
@@ -135,5 +140,9 @@ public class NewMove : MonoBehaviour
     IEnumerator Cooldown(){
       yield return new WaitForSeconds(3);
       zoom = true;
+    }
+
+    public void ByeBye(){
+      Application.Quit();
     }
 }
