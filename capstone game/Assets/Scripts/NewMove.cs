@@ -111,6 +111,12 @@ public class NewMove : MonoBehaviour
           zoom = false;
           rb.velocity = transform.forward * dSpeed;
         }
+        if(Input.GetKeyDown("escape")){
+          Cursor.lockState = CursorLockMode.None;
+        }
+        if(Input.GetMouseButton(0)){
+          Cursor.lockState = CursorLockMode.Locked;
+        }
       }
     void FixedUpdate(){
         if(Input.GetAxisRaw("Vertical") == 1){
